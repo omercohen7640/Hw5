@@ -69,7 +69,8 @@ Return value: None
 	    void displayNumberOfDeliveries();
 
     protected:
-        int initFortune_;
+        int funds_;
+        int numberOfDeliveries_;
         DeliveryVehicleList DV_List_;
         list<DeliveryVehicle>::iterator lastReceivedAParcel_;
 };
