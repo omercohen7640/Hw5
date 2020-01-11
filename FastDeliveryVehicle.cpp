@@ -4,7 +4,8 @@
 
 #include "FastDeliveryVehicle.H"
 
-FastDeliveryVehicle::FastDeliveryVehicle(const char *ID, Quality quality) {
+FastDeliveryVehicle::FastDeliveryVehicle(const char *ID, Quality quality ) : DeliveryVehicle(ID,
+        quality){
 
 }
 

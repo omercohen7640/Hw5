@@ -21,7 +21,6 @@ char* createNameID(const char* name,int ID)
 	delete[] num;
 	return name_;
 }
-
 int main()
 {
 	DeliveryCompany* fedEks = new DeliveryCompany(250);

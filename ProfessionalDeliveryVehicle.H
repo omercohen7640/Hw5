@@ -1,7 +1,8 @@
 #ifndef PROFESSIONALDELIVERYVEHICLE_H_
 #define PROFESSIONALDELIVERYVEHICLE_H_
 
-class ProfessionalDeliveryVehicle{
+#include "DeliveryVehicle.H"
+class ProfessionalDeliveryVehicle : public DeliveryVehicle{
 public:
 	//c'tor
 	ProfessionalDeliveryVehicle(const char* ID, Quality quality);
