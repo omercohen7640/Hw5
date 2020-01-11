@@ -2,8 +2,10 @@
 #define DELIVERYVEHICLE_H_
 
 #include "Parcel.H"
+#include <queue>
 
 typedef enum quality{good = 3, ok = 4, bad = 5} Quality;
+typedef enum _result{FAIL=0, SUCCESS=1} Result;
 
 class DeliveryVehicle{
 public:
