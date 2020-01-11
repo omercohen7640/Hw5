@@ -4,11 +4,17 @@
 #include "DeliveryVehicle.H"
 
 DeliveryVehicle::DeliveryVehicle() {
+    for (int i = 0; i < PARCEL_NUM; ++i) {
+        parcel_arrey[i] = NULL;
+    }
     _next_vehicle = NULL;
 }
 
 DeliveryVehicle::DeliveryVehicle(const char *ID, Quality quality): _vehicle_quality(quality) {
     strcpy(_vehicle_id,ID);
+    for (int i = 0; i < PARCEL_NUM; ++i) {
+        parcel_arrey[i] = NULL;
+    }
     _next_vehicle = NULL;
 }
 
@@ -32,9 +38,20 @@ void DeliveryVehicle::setNext(DeliveryVehicle *next_vehicle) {
     _next_vehicle = next_vehicle;
 }
 
+bool DeliveryVehicle::addParcel(Parcel *parcel) {
+    for (int i = 0; i < PARCEL_NUM; ++i) {
+        if (parcel_arrey[i]->getDest() == -1){
+            parcel_arrey[i] = parcel;
+            return true;
+        }
+    }
+    return false;
+}
+
 int DeliveryVehicle::performDeliveryDay(int *numberOfDeliveries) {
 
 }
+
 
 
 

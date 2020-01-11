@@ -10,14 +10,14 @@ Description: constructor
 Parameters: <> //TODO: complete
 Return value: Result - None
 **********************************************************************************/
-DeliveryVehicleList();
+DeliveryVehicleList(){}
 /*********************************************************************************
 Function name: ~DeliveryVehicleList
 Description: destructor
 Parameters: None
 Return value: None
 **********************************************************************************/
-~DeliveryVehicleList();
+~DeliveryVehicleList(){}
 /*********************************************************************************
 Function name: pushVehicle
 Description: add a new vehicle to the queue

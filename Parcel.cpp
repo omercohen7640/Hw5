@@ -12,12 +12,25 @@ Parcel::~Parcel() {
     delete _id;
 }
 
-int Parcel::getDest(){
+int Parcel::getDest() const{
     return _dest;
 }
 
-char* Parcel::getID() {
+char* Parcel::getID() const{
     return _id;
+}
+
+Parcel::Parcel(const Parcel &parcel): _dest(parcel.getDest()) {
+    strcpy(_id,parcel.getID());
+}
+
+Parcel& Parcel::operator=(const Parcel& parcel_to_copy) {
+    if (this != &parcel_to_copy) {
+        _dest = parcel_to_copy.getDest();
+        delete _id;
+        strcpy(_id, parcel_to_copy.getID());
+    }
+    return *this;
 }
 
 

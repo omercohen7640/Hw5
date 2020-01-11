@@ -3,6 +3,7 @@
 
 #include "Parcel.H"
 #include <queue>
+#define PARCEL_NUM 5
 
 typedef enum quality{good = 3, ok = 4, bad = 5} Quality;
 typedef enum _result{FAIL=0, SUCCESS=1} Result;
@@ -91,7 +92,7 @@ public:
     **********************************************************************************/
 	int performDeliveryDay(int* numberOfDeliveries);
 protected:
-    Parcel[5] parcel_arrey;
+    Parcel* parcel_arrey[PARCEL_NUM];
     char* _vehicle_id;
     queue<int> delivery_queue;
     Quality _vehicle_quality;
