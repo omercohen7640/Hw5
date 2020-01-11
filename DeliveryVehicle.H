@@ -32,7 +32,38 @@ public:
     Return value: -
     **********************************************************************************/
 	~DeliveryVehicle();
-	
+    /*********************************************************************************
+    Function name: getQuality
+    Description: getter
+    Parameters: non-parameters
+    Return value: Quality
+    **********************************************************************************/
+	Quality getQuality();
+
+    /*********************************************************************************
+    Function name: getID
+    Description: getter
+    Parameters: non-parameters
+    Return value: char*
+    **********************************************************************************/
+    char* getID() const;
+
+    /*********************************************************************************
+    Function name: getNext
+    Description: getter
+    Parameters: non-parameters
+    Return value: Delivery*
+    **********************************************************************************/
+    DeliveryVehicle* getNext() const;
+
+    /*********************************************************************************
+    Function name: setNext
+    Description: setter
+    Parameters: non-parameters
+    Return value: -
+    **********************************************************************************/
+    void setNext(DeliveryVehicle* next_vehicle);
+
     /*********************************************************************************
     Function name: addParcel
     Description: adds parcel to vehicle returns false if add failed
