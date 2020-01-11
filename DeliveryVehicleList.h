@@ -6,6 +6,7 @@
 #define HW5_DELIVERYVEHICLELIST_H
 
 #include "DeliveryVehicle.H"
+#include <list>
 
 class DeliveryVehicleList {
 
@@ -13,8 +14,8 @@ class DeliveryVehicleList {
 /*********************************************************************************
 Function name: DeliveryVehicleList
 Description: constructor
-Parameters: <> //TODO: complete
-Return value: Result - None
+Parameters: None
+Return value: None
 **********************************************************************************/
         DeliveryVehicleList();
 /*********************************************************************************
@@ -30,25 +31,31 @@ Description: add a new vehicle to the queue
 Parameters: DV - a pointer to vehicle object
 Return value: Result - SUCCESS if added, else FAIL
 **********************************************************************************/
-        Result pushVehicle (DeliveryVehicle *DV);
+        Result pushVehicle (DeliveryVehicle& DV);
 /*********************************************************************************
-Function name: popVehicle
-Description: remove a vehicle from the queue
-Parameters: DV - a pointer to vehicle object
-Return value: Result - SUCCESS if removed, else FAIL
+Function name: getTopVehicle
+Description: returns an iterator pointing to the first vehicle on the list
+Parameters: None
+Return value: list<DeliveryVehicle>::iterator - an iterator
 **********************************************************************************/
-        Result popVehicle (DeliveryVehicle *DV);
+        list<DeliveryVehicle>::iterator getTopVehicle();
 /*********************************************************************************
-Function name: getQlen
-Description: returns the length of the queue
-Parameters: DV - None
-Return value: int - the length of the queue
+Function name: getBottomVehicle
+Description: returns an iterator pointing to the last vehicle on the list
+Parameters: None
+Return value: list<DeliveryVehicle>::iterator - an iterator
 **********************************************************************************/
-        int getQlen();
+        list<DeliveryVehicle>::iterator getBottomVehicle();
+/*********************************************************************************
+Function name: isEmpty
+Description: returns whether the list is empty or not
+Parameters: None
+Return value: bool - true if empty, else false
+**********************************************************************************/
+        bool isEmpty();
+
     protected:
-        DeliveryVehicle *pFirstVehicle;
-        DeliveryVehicle *pLastVehicle;
-        int Qlen = 0;
+        list<DeliveryVehicle> DV_List_;
 
 };
 
