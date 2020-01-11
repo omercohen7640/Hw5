@@ -1,7 +1,9 @@
 #ifndef FASTDELIVERYVEHICLE_H_
 #define FASTDELIVERYVEHICLE_H_
 
-class FastDeliveryVehicle{
+#include "DeliveryVehicle.H"
+
+class FastDeliveryVehicle : public DeliveryVehicle {
 public:
 	
 	//c'tor
@@ -11,7 +13,7 @@ public:
 	~FastDeliveryVehicle();
 	
 	//adds parcel to vehicle returns false if add failed
-	bool addParcel(Parcel* parcel);
+	//bool addParcel(Parcel* parcel);
 	
 	//performs all possible deliveries for one day
 	//output example

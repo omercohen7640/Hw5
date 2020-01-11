@@ -90,12 +90,12 @@ public:
     Parameters: adds parcel to vehicle returns false if add failed
     Return value: boolean value
     **********************************************************************************/
-	int performDeliveryDay(int* numberOfDeliveries);
+	virtual int performDeliveryDay(int* numberOfDeliveries);
 protected:
-    Parcel* parcel_arrey[PARCEL_NUM];
     char* _vehicle_id;
-    queue<int> delivery_queue;
+    queue<Parcel*> parcel_queue;
     Quality _vehicle_quality;
+    int _current_station;
     DeliveryVehicle* _next_vehicle;
 };
 
