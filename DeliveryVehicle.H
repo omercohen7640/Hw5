@@ -6,31 +6,66 @@
 
 typedef enum quality{good = 3, ok = 4, bad = 5} Quality;
 typedef enum _result{FAIL=0, SUCCESS=1} Result;
-
+using namespace std;
 class DeliveryVehicle{
 public:
-	//c'tor
+    /*********************************************************************************
+    Function name: DeliveryVehicle
+    Description: constructor
+    Parameters: non-parameters
+    Return value: -
+    **********************************************************************************/
+	DeliveryVehicle();
+
+    /*********************************************************************************
+    Function name: DeliveryVehicle
+    Description: constructor
+    Parameters: non-parameters
+    Return value: -
+    **********************************************************************************/
 	DeliveryVehicle(const char* ID, Quality quality);
-	
-	//d'tor
+
+    /*********************************************************************************
+    Function name: ~DeliveryVehicle
+    Description: d'tor
+    Parameters: non-parameters
+    Return value: -
+    **********************************************************************************/
 	~DeliveryVehicle();
 	
-	//adds parcel to vehicle returns false if add failed
+    /*********************************************************************************
+    Function name: addParcel
+    Description: adds parcel to vehicle returns false if add failed
+    Parameters: parcel's pointer
+    Return value: boolean value
+    **********************************************************************************/
 	bool addParcel(Parcel* parcel);
-	
-	//performs all possible deliveries for one day
-	//output example
-	//Starting deliveries for vehicle riksha
-	//Delivering parcel hot_air to position 3
-	//Fuel consumed: 3 Revenue is: 4
-	//Delivering parcel mice to position 2
-	//Fuel consumed: 9 Revenue is: 4
-	//Total travel distance is 9
-	//Total revenue is -4
-	//
-	//if no parcels present:
-	//No parcels to deliver for vehicle riksha
+
+    /*********************************************************************************
+    Function name: performDeliveryDay
+    Description:
+    performs all possible deliveries for one day
+	output example
+	Starting deliveries for vehicle riksha
+	Delivering parcel hot_air to position 3
+	Fuel consumed: 3 Revenue is: 4
+	Delivering parcel mice to position 2
+	Fuel consumed: 9 Revenue is: 4
+	Total travel distance is 9
+	Total revenue is -4
+	if no parcels present:
+	No parcels to deliver for vehicle riksha
+    Parameters: adds parcel to vehicle returns false if add failed
+    Return value: boolean value
+    **********************************************************************************/
 	int performDeliveryDay(int* numberOfDeliveries);
+protected:
+    Parcel[5] parcel_arrey;
+    char* _vehicle_id;
+    queue<int> delivery_queue;
+    Quality _vehicle_quality;
+    DeliveryVehicle* _next_vehicle;
 };
+
 
 #endif /* DELIVERYVEHICLE_H_ */
