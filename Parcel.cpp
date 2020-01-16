@@ -5,6 +5,7 @@
 #include "Parcel.H"
 
 Parcel::Parcel(const char *ID , int dest ): _dest(dest) {
+    _id = new char [strlen(ID) + 1 ];
     strcpy(_id,ID);
 }
 
