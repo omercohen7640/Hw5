@@ -62,8 +62,12 @@ int ProfessionalDeliveryVehicle::performDeliveryDay(int *numberOfDeliveries) {
 }
 
 bool ProfessionalDeliveryVehicle::addParcel(Parcel *parcel) {
-    int dest = parcel_queue.back()->getDest();
-    int source = parcel->getDest();
+    int source;
+    if (parcel_queue.empty())
+        source=0;
+    else
+        source = parcel_queue.back()->getDest();
+    int dest = parcel->getDest();
     if (dest >= source && (dest-source) <= 4) {
         return DeliveryVehicle::addParcel(parcel);
     }
