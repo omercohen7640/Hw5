@@ -14,12 +14,12 @@ ProfessionalDeliveryVehicle::~ProfessionalDeliveryVehicle() {
 }
 
 int ProfessionalDeliveryVehicle::performDeliveryDay(int *numberOfDeliveries) {
-    if (!parcel_queue.empty()){
+    if (parcel_queue.empty()){
         cout << "No parcels to deliver for vehicle " << _vehicle_id << endl;
         *numberOfDeliveries = 0;
         return 0;
     }
-    cout << "Starting deliveries for vehicle" << _vehicle_id << endl;
+    cout << "Starting deliveries for vehicle " << _vehicle_id << endl;
     int station_counter = 0;
     int distance;
     int delivery_counter=0;
@@ -35,7 +35,7 @@ int ProfessionalDeliveryVehicle::performDeliveryDay(int *numberOfDeliveries) {
         {
             *numberOfDeliveries = delivery_counter;
             total_revenue= station_counter - _vehicle_quality -station_counter;
-            cout << "Total revenue is " << total_revenue;
+            cout << "Total revenue is " << total_revenue << endl;
             return total_revenue;
         }
 
@@ -43,16 +43,16 @@ int ProfessionalDeliveryVehicle::performDeliveryDay(int *numberOfDeliveries) {
         delivery_counter++;
 
         cout << "Delivering parcel " << parcel_queue.front()->getID() << " to position " << next_station << endl;
-        cout << "Fuel consumed: " << distance << " Revenue is: " << distance*2 <<endl;
+        cout << "Fuel consumed: " << distance << " Revenue is: 4"  << endl;
         parcel_queue.pop_front();
     }
     *numberOfDeliveries = station_counter;
-    total_revenue= station_counter - _vehicle_quality ;
+    total_revenue= delivery_counter * 4 - _vehicle_quality ;
     cout << "Total revenue is " << total_revenue << endl;
     if (delivery_counter == 0)
         cout << "Revenue per parcel: no parcels" << endl;
     else
-        cout << "Revenue per parcel: " << total_revenue/delivery_counter;
+        cout << "Revenue per parcel: " << total_revenue/delivery_counter << endl;
     if (station_counter == 0) {
         cout << "Revenue per distance: no distance" << endl;
     }else{
@@ -64,7 +64,7 @@ int ProfessionalDeliveryVehicle::performDeliveryDay(int *numberOfDeliveries) {
 bool ProfessionalDeliveryVehicle::addParcel(Parcel *parcel) {
     int source;
     if (parcel_queue.empty())
-        source=0;
+        source=_current_station;
     else
         source = parcel_queue.back()->getDest();
     int dest = parcel->getDest();

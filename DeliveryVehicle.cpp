@@ -55,12 +55,12 @@ bool DeliveryVehicle::addParcel(Parcel *parcel) {
 }
 
 int DeliveryVehicle::performDeliveryDay(int *numberOfDeliveries) {
-    if (!parcel_queue.empty()){
+    if (parcel_queue.empty()){
         cout << "No parcels to deliver for vehicle " << _vehicle_id << endl;
         *numberOfDeliveries = 0;
         return 0;
     }
-    cout << "Starting deliveries for vehicle" << _vehicle_id << endl;
+    cout << "Starting deliveries for vehicle " << _vehicle_id << endl;
     int station_counter = 0;
     int distance;
     int delivery_counter=0;
@@ -76,7 +76,7 @@ int DeliveryVehicle::performDeliveryDay(int *numberOfDeliveries) {
         {
             *numberOfDeliveries = delivery_counter;
             total_revenue= 4*delivery_counter - _vehicle_quality -station_counter;
-            cout << "Total revenue is " << total_revenue;
+            cout << "Total revenue is " << total_revenue << endl;
             return total_revenue;
         }
 
@@ -84,7 +84,7 @@ int DeliveryVehicle::performDeliveryDay(int *numberOfDeliveries) {
         delivery_counter++;
 
         cout << "Delivering parcel " << parcel_queue.front()->getID() << " to position " << next_station << endl;
-        cout << "Fuel consumed: " << distance << " Revenue is: 4";
+        cout << "Fuel consumed: " << distance << " Revenue is: 4" << endl;
         parcel_queue.pop_front();
     }
     *numberOfDeliveries = station_counter;
