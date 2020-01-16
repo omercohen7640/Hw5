@@ -21,7 +21,7 @@ char* Parcel::getID() const{
 }
 
 Parcel::Parcel(const Parcel &parcel): _dest(parcel.getDest()) {
-    _id = new char [strlen(parcel.getID()) +1 ];
+    _id = new char [strlen(parcel.getID()) + 1 ];
     strcpy(_id,parcel.getID());
 }
 
