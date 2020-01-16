@@ -48,6 +48,7 @@ int ProfessionalDeliveryVehicle::performDeliveryDay(int *numberOfDeliveries) {
     }
     *numberOfDeliveries = station_counter;
     total_revenue= delivery_counter * 4 - _vehicle_quality ;
+    cout << "Total travel distance is " << station_counter << endl;
     cout << "Total revenue is " << total_revenue << endl;
     if (delivery_counter == 0)
         cout << "Revenue per parcel: no parcels" << endl;

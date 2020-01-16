@@ -49,6 +49,7 @@ int FastDeliveryVehicle::performDeliveryDay(int *numberOfDeliveries) {
     }
     *numberOfDeliveries = station_counter;
     total_revenue= station_counter - _vehicle_quality ;
+    cout << "Total travel distance is " << station_counter << endl;
     cout << "Total revenue is " << total_revenue << endl;
     return total_revenue;
 }
