@@ -4,7 +4,7 @@
 
 #include "DeliveryCompany.H"
 
-DeliveryCompany::DeliveryCompany(int money) : funds_(money), lastReceivedAParcel_(DV_List_.getTopVehicle()), numberOfDeliveries_(0){}
+DeliveryCompany::DeliveryCompany(int money) : balance_(money), revenue_(0), lastReceivedAParcel_(DV_List_.getTopVehicle()), numberOfDeliveries_(0){}
 
 DeliveryCompany::~DeliveryCompany() {}
 
@@ -45,19 +45,27 @@ bool DeliveryCompany::receiveParcel(Parcel *parcel) {
 }
 
 bool DeliveryCompany::performDeliveryDay() {
+    if (DV_List_.isEmpty() == true) return false;
     cout << "Starting days deliveries:" << endl;
     list<DeliveryVehicle>::iterator it;
-    for (it = DV_List_.getTopVehicle(); it != DV_List_.getBottomVehicle() ; ++it) {
+    revenue_ = 0;
+    for (it = DV_List_.getTopVehicle(); it != DV_List_.getBottomVehicle() ; ++it)
+    {
         int numberOfDeliveries = 0;
-        funds_ += (*it).performDeliveryDay(&numberOfDeliveries);
+        revenue_ += (*it).performDeliveryDay(&numberOfDeliveries);
         numberOfDeliveries_ += numberOfDeliveries;
     }
+    cout << "Total revenue for company is " << revenue_ << endl;
     displayFunds();
     displayNumberOfDeliveries();
-    return false;
+    return true;
 }
 
 void DeliveryCompany::displayFunds() {
+    cout << "Company balance is now " << balance_ << endl;
+}
 
+void DeliveryCompany::displayNumberOfDeliveries() {
+    cout << "Till now company has delivered " << numberOfDeliveries_ << " parcels" << endl;
 }
 
