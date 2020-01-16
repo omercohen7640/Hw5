@@ -44,12 +44,16 @@ int FastDeliveryVehicle::performDeliveryDay(int *numberOfDeliveries) {
         delivery_counter++;
 
         cout << "Delivering parcel " << parcel_queue.front()->getID() << " to position " << next_station << endl;
-        cout << "Fuel consumed: " << distance << " Revenue is: 4";
-        parcel_queue.pop();
+        cout << "Fuel consumed: " << distance << " Revenue is: " << distance*2;
+        parcel_queue.pop_front();
     }
     *numberOfDeliveries = station_counter;
-    total_revenue= 4*delivery_counter - _vehicle_quality -station_counter;
+    total_revenue= station_counter - _vehicle_quality ;
     cout << "Total revenue is " << total_revenue;
     return total_revenue;
+}
+
+VehicleType FastDeliveryVehicle::WhatAmI() {
+    return FASTVEHICLE;
 }
 

@@ -2,11 +2,12 @@
 #define DELIVERYVEHICLE_H_
 
 #include "Parcel.H"
-#include <queue>
+#include <deque>
 #define PARCEL_NUM 5
 
 typedef enum quality{good = 3, ok = 4, bad = 5} Quality;
 typedef enum _result{FAIL=0, SUCCESS=1} Result;
+typedef enum _vehicle_type{VEHICLE=0,FASTVEHICLE=1,PROFESSIONALVEHICLE=2} VehicleType;
 using namespace std;
 class DeliveryVehicle{
 public:
@@ -91,9 +92,19 @@ public:
     Return value: boolean value
     **********************************************************************************/
 	virtual int performDeliveryDay(int* numberOfDeliveries);
+
+
+	//TODO: add virtual function- WhatAmI() - return string according to the dynamic type
+    /*********************************************************************************
+    Function name: WhatAmI
+    Description: return vehicle type according to dynamic type
+    Parameters: -
+    Return value: VehicleType
+    **********************************************************************************/
+	virtual VehicleType WhatAmI();
 protected:
     char* _vehicle_id;
-    queue<Parcel*> parcel_queue;
+    deque<Parcel*> parcel_queue;
     Quality _vehicle_quality;
     int _current_station;
     DeliveryVehicle* _next_vehicle;

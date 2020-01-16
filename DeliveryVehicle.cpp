@@ -34,7 +34,17 @@ void DeliveryVehicle::setNext(DeliveryVehicle *next_vehicle) {
 
 bool DeliveryVehicle::addParcel(Parcel *parcel) {
      if (parcel_queue.size() == PARCEL_NUM) return false;
-     parcel_queue.push(parcel);
+     deque<Parcel*>::iterator i;
+     i = parcel_queue.begin();
+    while (i != parcel_queue.end())
+    {
+        if (strcmp((**i).getID(),parcel->getID()) == 0){
+            delete parcel;
+            return false;
+        }
+        i++;
+    }
+     parcel_queue.push_back(parcel);
      return true;
 }
 
@@ -69,12 +79,16 @@ int DeliveryVehicle::performDeliveryDay(int *numberOfDeliveries) {
 
         cout << "Delivering parcel " << parcel_queue.front()->getID() << " to position " << next_station << endl;
         cout << "Fuel consumed: " << distance << " Revenue is: 4";
-        parcel_queue.pop();
+        parcel_queue.pop_front();
     }
     *numberOfDeliveries = station_counter;
     total_revenue= 4*delivery_counter - _vehicle_quality -station_counter;
     cout << "Total revenue is " << total_revenue;
     return total_revenue;
+}
+
+VehicleType DeliveryVehicle::WhatAmI() {
+    return VEHICLE;
 }
 
 
