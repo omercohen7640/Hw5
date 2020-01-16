@@ -11,7 +11,7 @@ Description: constructor
 Parameters: money - initial fortune
 Return value: None
 **********************************************************************************/
-	ProfessionalDeliveryCompany(int money);
+	ProfessionalDeliveryCompany(int money = 100);
 
 /*********************************************************************************
 Function name: ~ProfessionalDeliveryCompany
