@@ -8,8 +8,14 @@ DeliveryVehicleList::DeliveryVehicleList(){}
 
 DeliveryVehicleList::~DeliveryVehicleList()
 {
-    DV_List_.clear();
+    list<DeliveryVehicle*>::iterator current;
+    current = DV_List_.begin();
+    while(current != DV_List_.end())
+    {
+        delete (*current);
+    }
 }
+
 
 Result DeliveryVehicleList::pushVehicle(DeliveryVehicle* const DV) {
     DV_List_.push_front(DV);

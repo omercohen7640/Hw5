@@ -10,7 +10,11 @@ FastDeliveryCompany::FastDeliveryCompany(int money) : DeliveryCompany(money) {}
 FastDeliveryCompany::~FastDeliveryCompany() {}
 
 bool FastDeliveryCompany::addVehicle(DeliveryVehicle *vehicle) {
-    if (vehicle->WhatAmI() != FASTVEHICLE) return false;
+    if (vehicle->WhatAmI() != FASTVEHICLE)
+    {
+        delete (vehicle);
+        return false;
+    }
     else {
         if (DeliveryCompany::addVehicle(vehicle) == false) return false;
     }

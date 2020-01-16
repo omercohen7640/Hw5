@@ -9,7 +9,11 @@ ProfessionalDeliveryCompany::ProfessionalDeliveryCompany(int money) : DeliveryCo
 ProfessionalDeliveryCompany::~ProfessionalDeliveryCompany() {}
 
 bool ProfessionalDeliveryCompany::addVehicle(DeliveryVehicle *vehicle) {
-    if (vehicle->WhatAmI() != PROFESSIONALVEHICLE) return false;
+    if (vehicle->WhatAmI() != PROFESSIONALVEHICLE)
+    {
+        delete (vehicle);
+        return false;
+    }
     else {
         if (DeliveryCompany::addVehicle(vehicle) == false) return false;
     }

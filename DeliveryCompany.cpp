@@ -7,9 +7,20 @@
 
 DeliveryCompany::DeliveryCompany(int money) : balance_(money), revenue_(0), lastReceivedAParcel_(DV_List_.getTopVehicle()), numberOfDeliveries_(0){}
 
-DeliveryCompany::~DeliveryCompany() {}
+DeliveryCompany::~DeliveryCompany(){}
 
 bool DeliveryCompany::addVehicle(DeliveryVehicle *vehicle) {
+    list<DeliveryVehicle*>::iterator current;
+    current = DV_List_.getTopVehicle();
+    while (current != DV_List_.getBottomVehicle())
+    {
+        if (vehicle->getID() == (*current)->getID())
+        {
+            delete vehicle;
+            return false;
+        }
+        ++current;
+    }
     if (DV_List_.pushVehicle(vehicle) == SUCCESS) return true;
     return false;
 }
