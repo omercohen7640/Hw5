@@ -29,7 +29,7 @@ Description: adds vehicle to vehicle queue
 Parameters: None
 Return value: returns false if not possible and deletes vehicle
 **********************************************************************************/
-	    bool addVehicle(DeliveryVehicle* vehicle);
+	    virtual bool addVehicle(DeliveryVehicle* vehicle);
 /*********************************************************************************
 Function name: receiveParcel
 Description: receives parcel if possible
