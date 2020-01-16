@@ -1,9 +1,16 @@
 #ifndef FASTDELIVERYCOMPANY_H_
 #define FASTDELIVERYCOMPANY_H_
 
-class FastDeliveryCompany{
+#include "DeliveryCompany.H"
+
+class FastDeliveryCompany : public DeliveryCompany{
 public:
-	//c'tor
+/*********************************************************************************
+Function name: DeliveryCompany
+Description: constructor
+Parameters: money - initial fortune
+Return value: None
+**********************************************************************************/
 	FastDeliveryCompany(int money);
 	
 	//d'tor
@@ -38,6 +45,9 @@ public:
 	//output example:
 	//Till now company has delivered 3 parcels
 	void displayNumberOfDeliveries();
+
+protected:
+
 };
 
 #endif /* FASTDELIVERYCOMPANY_H_ */

@@ -19,7 +19,7 @@ Description: destructor
 Parameters: None
 Return value: None
 **********************************************************************************/
-	    ~DeliveryCompany();
+	    virtual ~DeliveryCompany();
 
 /*********************************************************************************
 Function name: addVehicle
@@ -46,7 +46,6 @@ Return value: returns false if no vehicles are present
 	//Starting days deliveries:
 	//<here comes output for each vehicle>
 	//Total revenue for company is -2
-	//Company balance is now 123
 **********************************************************************************/
 	    bool performDeliveryDay();
 /*********************************************************************************
@@ -73,7 +72,7 @@ Return value: None
         int revenue_;
         int numberOfDeliveries_;
         DeliveryVehicleList DV_List_;
-        list<DeliveryVehicle>::iterator lastReceivedAParcel_;
+        list<DeliveryVehicle*>::iterator lastReceivedAParcel_;
 };
 
 #endif /* DELIVERYCOMPANY_H_ */
