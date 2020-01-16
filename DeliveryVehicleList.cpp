@@ -12,7 +12,8 @@ DeliveryVehicleList::~DeliveryVehicleList()
     current = DV_List_.begin();
     while(current != DV_List_.end())
     {
-        delete (*current);
+        delete *current;
+        ++current;
     }
 }
 
