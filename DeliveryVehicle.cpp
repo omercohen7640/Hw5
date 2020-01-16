@@ -8,6 +8,7 @@ DeliveryVehicle::DeliveryVehicle() {
 }
 
 DeliveryVehicle::DeliveryVehicle(const char *ID, Quality quality): _vehicle_quality(quality), _current_station(0) {
+    _vehicle_id = new char [strlen(ID) +1 ];
     strcpy(_vehicle_id,ID);
     _next_vehicle = NULL;
 }
