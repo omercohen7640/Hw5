@@ -31,21 +31,21 @@ Description: add a new vehicle to the queue
 Parameters: DV - a pointer to vehicle object
 Return value: Result - SUCCESS if added, else FAIL
 **********************************************************************************/
-        Result pushVehicle (DeliveryVehicle& DV);
+        Result pushVehicle (DeliveryVehicle* const DV);
 /*********************************************************************************
 Function name: getTopVehicle
 Description: returns an iterator pointing to the first vehicle on the list
 Parameters: None
 Return value: list<DeliveryVehicle>::iterator - an iterator
 **********************************************************************************/
-        list<DeliveryVehicle>::iterator getTopVehicle();
+        list<DeliveryVehicle*>::iterator getTopVehicle();
 /*********************************************************************************
 Function name: getBottomVehicle
 Description: returns an iterator pointing to the last vehicle on the list
 Parameters: None
 Return value: list<DeliveryVehicle>::iterator - an iterator
 **********************************************************************************/
-        list<DeliveryVehicle>::iterator getBottomVehicle();
+        list<DeliveryVehicle*>::iterator getBottomVehicle();
 /*********************************************************************************
 Function name: isEmpty
 Description: returns whether the list is empty or not
@@ -55,7 +55,7 @@ Return value: bool - true if empty, else false
         bool isEmpty();
 
     protected:
-        list<DeliveryVehicle> DV_List_;
+        list<DeliveryVehicle*> DV_List_;
 
 };
 
