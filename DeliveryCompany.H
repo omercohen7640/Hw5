@@ -73,6 +73,9 @@ Return value: None
         int numberOfDeliveries_;
         DeliveryVehicleList DV_List_;
         list<DeliveryVehicle*>::iterator lastReceivedAParcel_;
+
+    private:
+        void lastReceivedAParcel_borderrs (list<DeliveryVehicle*>::iterator &current);
 };
 
 #endif /* DELIVERYCOMPANY_H_ */
