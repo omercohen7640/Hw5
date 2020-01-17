@@ -24,7 +24,7 @@ Description: destructor
 Parameters: None
 Return value: None
 **********************************************************************************/
-        ~DeliveryVehicleList();
+        virtual ~DeliveryVehicleList();
 /*********************************************************************************
 Function name: pushVehicle
 Description: add a new vehicle to the queue

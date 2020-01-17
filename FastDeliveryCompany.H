@@ -19,7 +19,7 @@ Description: destructor
 Parameters: None
 Return value: None
 **********************************************************************************/
-	~FastDeliveryCompany();
+	virtual ~FastDeliveryCompany();
 
 /*********************************************************************************
 Function name: addVehicle
