@@ -91,7 +91,7 @@ int DeliveryVehicle::performDeliveryDay(int *numberOfDeliveries) {
         cout << "Fuel consumed: " << distance << " Revenue is: 4" << endl;
         parcel_queue.pop_front();
     }
-    *numberOfDeliveries = station_counter;
+    *numberOfDeliveries = delivery_counter;
     total_revenue= 4*delivery_counter - _vehicle_quality -station_counter;
     cout << "Total travel distance is " << station_counter << endl;
     cout << "Total revenue is " << total_revenue << endl;
