@@ -75,7 +75,7 @@ Return value: None
         list<DeliveryVehicle*>::iterator lastReceivedAParcel_;
 
     private:
-        void lastReceivedAParcel_borderrs (list<DeliveryVehicle*>::iterator &current);
+        void lastReceivedAParcel_increment(list<DeliveryVehicle *>::iterator &current);
 };
 
 #endif /* DELIVERYCOMPANY_H_ */

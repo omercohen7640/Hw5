@@ -34,61 +34,34 @@ bool DeliveryCompany::addVehicle(DeliveryVehicle *vehicle) {
 bool DeliveryCompany::receiveParcel(Parcel *parcel) {
     if (DV_List_.isEmpty()) return false;
     list<DeliveryVehicle *>::iterator current; //current is a pointer to pointer, because an iterator is a pointer to an element, and the elements in this list are pointers
+
     bool flag_parcelAdded;
-    if (lastReceivedAParcel_ == DV_List_.getBottomVehicle()) lastReceivedAParcel_ = DV_List_.getTopVehicle();
     current = lastReceivedAParcel_;
-    //if there's only one vehicle in the list
-    if (DV_List_.getTopVehicle() == DV_List_.getBottomVehicle()) {
+
+    //increment current to the object after lastReceiveParcel
+    lastReceivedAParcel_increment(current);
+
+//    cout << "last received parcel: "  << (**lastReceivedAParcel_).getID() << endl;
+    // cout << "current: "  << (**current).getID() << endl;
+    for (int i = 0; i < DV_List_.listSize(); ++i) {
         //try to add parcel
         flag_parcelAdded = (**current).addParcel(parcel);
+
         //if parcel added successfully then change lastReceivedAParcel_ to this vehicle and end function
         if (flag_parcelAdded == true) {
             lastReceivedAParcel_ = current;
             return true;
         }
+
         //if parcel wasn't added to vehicle and parcel was deleted then end function
         if (parcel == NULL) return false;
-    }
-    //if lastReceivedAParcel_ is the last vehicle in the list, we start check at the start of the list
-    lastReceivedAParcel_borderrs(current); //function does ++current
-    cout << "last received parcel: "  << (**lastReceivedAParcel_).getID() << endl;
-    cout << "current: "  << (**current).getID() << endl;
-    for(int i=0; i<DV_List_.listSize() ; ++i)
-    {
-        //try to add parcel
-        flag_parcelAdded = (**current).addParcel(parcel);
-        //if parcel added successfully then change lastReceivedAParcel_ to this vehicle and end function
-        if (flag_parcelAdded == true) {
-            lastReceivedAParcel_ = current;
-            return true;
-        }
-        //if parcel wasn't added to vehicle and parcel was deleted then end function
-        if (parcel == NULL) return false;
+
         //if parcel wasn't added to vehicle but still exists, try to find another vehicle
-        lastReceivedAParcel_borderrs(current); //function does ++current
-        cout << "last received parcel: "  << (**lastReceivedAParcel_).getID() << endl;
-        cout << "current: "  << (**current).getID() << endl;
+        lastReceivedAParcel_increment(current); //function does ++current
+        //cout << "last received parcel: "  << (**lastReceivedAParcel_).getID() << endl;
+        //cout << "current: "  << (**current).getID() << endl;
     }
 
-
-
-    while (current != lastReceivedAParcel_) {
-        //try to add parcel
-        flag_parcelAdded = (**current).addParcel(parcel);
-        //if parcel added successfully then change lastReceivedAParcel_ to this vehicle and end function
-        if (flag_parcelAdded == true) {
-            lastReceivedAParcel_ = current;
-            return true;
-        }
-        //if parcel wasn't added to vehicle and parcel was deleted then end function
-        if (parcel == NULL) return false;
-        //if parcel wasn't added to vehicle but still exists, try to find another vehicle
-        lastReceivedAParcel_borderrs(current); //function does ++current
-        cout << "last received parcel: "  << (**lastReceivedAParcel_).getID() << endl;
-        cout << "current: "  << (**current).getID() << endl;
-    }
-    flag_parcelAdded = (**current).addParcel(parcel);
-    if (flag_parcelAdded == true) return true;
     delete parcel;
     return false;
 }
@@ -117,9 +90,8 @@ void DeliveryCompany::displayNumberOfDeliveries() {
     cout << "Till now company has delivered " << numberOfDeliveries_ << " parcels" << endl;
 }
 
-void DeliveryCompany::lastReceivedAParcel_borderrs(list<DeliveryVehicle *>::iterator &current) {
-    if (++current == DV_List_.getBottomVehicle())
-    {
+void DeliveryCompany::lastReceivedAParcel_increment(list<DeliveryVehicle *>::iterator &current) {
+    if (++current == DV_List_.getBottomVehicle()) {
         current = DV_List_.getTopVehicle();
     }
 }
