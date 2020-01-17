@@ -38,20 +38,20 @@ void DeliveryVehicle::setNext(DeliveryVehicle *next_vehicle) {
     _next_vehicle = next_vehicle;
 }
 
-bool DeliveryVehicle::addParcel(Parcel *parcel) {
-     if (parcel_queue.size() == PARCEL_NUM) return false;
-     deque<Parcel*>::iterator i;
-     i = parcel_queue.begin();
-    while (i != parcel_queue.end())
-    {
-        if (strcmp((**i).getID(),parcel->getID()) == 0){
-            delete parcel;
+bool DeliveryVehicle::addParcel(Parcel *parcel, bool *deleted) {
+    if (parcel_queue.size() == PARCEL_NUM) return false;
+    deque<Parcel *>::iterator i;
+    i = parcel_queue.begin();
+    while (i != parcel_queue.end()) {
+        if (strcmp((**i).getID(), parcel->getID()) == 0) {
+            //delete parcel;
+            *deleted = true;
             return false;
         }
         i++;
     }
-     parcel_queue.push_back(parcel);
-     return true;
+    parcel_queue.push_back(parcel);
+    return true;
 }
 
 int DeliveryVehicle::performDeliveryDay(int *numberOfDeliveries) {

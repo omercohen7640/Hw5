@@ -65,18 +65,18 @@ int ProfessionalDeliveryVehicle::performDeliveryDay(int *numberOfDeliveries) {
     return total_revenue;
 }
 
-bool ProfessionalDeliveryVehicle::addParcel(Parcel *parcel) {
+bool ProfessionalDeliveryVehicle::addParcel(Parcel *parcel, bool *deleted) {
     int source;
     if (parcel_queue.empty())
-        source=_current_station;
+        source = _current_station;
     else
         source = parcel_queue.back()->getDest();
     int dest = parcel->getDest();
-    if (dest >= source && (dest-source) <= 4) {
-        return DeliveryVehicle::addParcel(parcel);
+    if (dest >= source && (dest - source) <= 4) {
+        return DeliveryVehicle::addParcel(parcel, deleted);
     }
-    if (dest < source && (10 - source + dest) <= 4 ){
-        return DeliveryVehicle::addParcel(parcel);
+    if (dest < source && (10 - source + dest) <= 4) {
+        return DeliveryVehicle::addParcel(parcel, deleted);
     }
     return false;
 }

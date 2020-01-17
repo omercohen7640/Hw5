@@ -11,7 +11,7 @@ public:
 	~ProfessionalDeliveryVehicle();
 	
 	//adds parcel to vehicle returns false if add failed
-	bool addParcel(Parcel* parcel);
+    bool addParcel(Parcel *parcel, bool *deleted);
 
     /*********************************************************************************
     Function name: performDeliveryDay

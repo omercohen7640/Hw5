@@ -4,13 +4,6 @@
 
 #include "DeliveryCompany.H"
 
-void test (list<DeliveryVehicle*>::iterator lastReceivedAParcel_)
-{
-    list<DeliveryVehicle*>::iterator current;
-    current = lastReceivedAParcel_;
-    cout << "test1" << endl;
-}
-
 DeliveryCompany::DeliveryCompany(int money) : balance_(money), revenue_(0), lastReceivedAParcel_(DV_List_.getBottomVehicle()), numberOfDeliveries_(0){}
 
 DeliveryCompany::~DeliveryCompany(){}
@@ -36,6 +29,8 @@ bool DeliveryCompany::receiveParcel(Parcel *parcel) {
     list<DeliveryVehicle *>::iterator current; //current is a pointer to pointer, because an iterator is a pointer to an element, and the elements in this list are pointers
 
     bool flag_parcelAdded;
+    bool deleted = false;
+
     current = lastReceivedAParcel_;
 
     //increment current to the object after lastReceiveParcel
@@ -45,7 +40,7 @@ bool DeliveryCompany::receiveParcel(Parcel *parcel) {
     // cout << "current: "  << (**current).getID() << endl;
     for (int i = 0; i < DV_List_.listSize(); ++i) {
         //try to add parcel
-        flag_parcelAdded = (**current).addParcel(parcel);
+        flag_parcelAdded = (**current).addParcel(parcel, &deleted);
 
         //if parcel added successfully then change lastReceivedAParcel_ to this vehicle and end function
         if (flag_parcelAdded == true) {
@@ -54,7 +49,7 @@ bool DeliveryCompany::receiveParcel(Parcel *parcel) {
         }
 
         //if parcel wasn't added to vehicle and parcel was deleted then end function
-        if (parcel == NULL) return false;
+        if (deleted == true) return false;
 
         //if parcel wasn't added to vehicle but still exists, try to find another vehicle
         lastReceivedAParcel_increment(current); //function does ++current

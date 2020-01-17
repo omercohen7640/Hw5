@@ -72,7 +72,7 @@ public:
     Parameters: parcel's pointer
     Return value: boolean value
     **********************************************************************************/
-	virtual bool addParcel(Parcel* parcel);
+    virtual bool addParcel(Parcel *parcel, bool *deleted);
 
     /*********************************************************************************
     Function name: performDeliveryDay
