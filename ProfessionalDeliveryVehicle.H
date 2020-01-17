@@ -8,7 +8,7 @@ public:
 	ProfessionalDeliveryVehicle(const char* ID, Quality quality);
 	
 	//d'tor
-	~ProfessionalDeliveryVehicle();
+    virtual ~ProfessionalDeliveryVehicle();
 	
 	//adds parcel to vehicle returns false if add failed
     bool addParcel(Parcel *parcel, bool *deleted);

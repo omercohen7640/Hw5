@@ -10,7 +10,7 @@ public:
 	FastDeliveryVehicle(const char* ID, Quality quality);
 	
 	//d'tor
-	~FastDeliveryVehicle();
+    virtual ~FastDeliveryVehicle();
 
     /*********************************************************************************
     Function name: performDeliveryDay

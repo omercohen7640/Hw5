@@ -33,14 +33,15 @@ public:
     Parameters: non-parameters
     Return value: -
     **********************************************************************************/
-	~DeliveryVehicle();
+    virtual ~DeliveryVehicle();
+
     /*********************************************************************************
     Function name: getQuality
     Description: getter
     Parameters: non-parameters
     Return value: Quality
     **********************************************************************************/
-	Quality getQuality();
+    Quality getQuality();
 
     /*********************************************************************************
     Function name: getID
