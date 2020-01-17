@@ -41,7 +41,7 @@ int ProfessionalDeliveryVehicle::performDeliveryDay(int *numberOfDeliveries) {
             return total_revenue;
              */
         }
-
+        _current_station = next_station;
         station_counter+= distance;
         delivery_counter++;
 
