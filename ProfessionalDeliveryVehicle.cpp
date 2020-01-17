@@ -17,7 +17,7 @@ int ProfessionalDeliveryVehicle::performDeliveryDay(int *numberOfDeliveries) {
     int station_counter = 0;
     int distance;
     int delivery_counter = 0;
-    int total_revenue;
+    int total_revenue = 0;
     int next_station;
     if (parcel_queue.empty()) {
         cout << "No parcels to deliver for vehicle " << _vehicle_id << endl;
