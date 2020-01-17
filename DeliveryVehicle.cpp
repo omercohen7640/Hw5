@@ -14,7 +14,7 @@ DeliveryVehicle::DeliveryVehicle(const char *ID, Quality quality): _vehicle_qual
 }
 
 DeliveryVehicle::~DeliveryVehicle() {
-    delete _vehicle_id;
+    delete[] _vehicle_id;
     deque<Parcel*>::iterator i  = parcel_queue.begin();
     while (i != parcel_queue.end()){
         delete *i;
