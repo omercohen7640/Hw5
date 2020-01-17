@@ -50,6 +50,8 @@ bool DeliveryCompany::receiveParcel(Parcel *parcel) {
     }
     //if lastReceivedAParcel_ is the last vehicle in the list, we start check at the start of the list
     lastReceivedAParcel_borderrs(current); //function does ++current
+    cout << "last received parcel: "  << (**lastReceivedAParcel_).getID() << endl;
+    cout << "current: "  << (**current).getID() << endl;
     while (current != lastReceivedAParcel_) {
         //try to add parcel
         flag_parcelAdded = (**current).addParcel(parcel);
@@ -62,6 +64,8 @@ bool DeliveryCompany::receiveParcel(Parcel *parcel) {
         if (parcel == NULL) return false;
         //if parcel wasn't added to vehicle but still exists, try to find another vehicle
         lastReceivedAParcel_borderrs(current); //function does ++current
+        cout << "last received parcel: "  << (**lastReceivedAParcel_).getID() << endl;
+        cout << "current: "  << (**current).getID() << endl;
     }
     flag_parcelAdded = (**current).addParcel(parcel);
     if (flag_parcelAdded == true) return true;
