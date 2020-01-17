@@ -79,6 +79,7 @@ bool DeliveryCompany::performDeliveryDay() {
         numberOfDeliveries_ += numberOfDeliveries;
     }
     cout << "Total revenue for company is " << revenue_ << endl;
+    balance_ += revenue_;
     return true;
 }
 
