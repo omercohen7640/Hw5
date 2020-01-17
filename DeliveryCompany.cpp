@@ -63,6 +63,9 @@ bool DeliveryCompany::receiveParcel(Parcel *parcel) {
         //if parcel wasn't added to vehicle but still exists, try to find another vehicle
         lastReceivedAParcel_borderrs(current); //function does ++current
     }
+    flag_parcelAdded = (**current).addParcel(parcel);
+    if (flag_parcelAdded == true) return true;
+    delete parcel;
     return false;
 }
 
