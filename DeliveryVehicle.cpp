@@ -74,10 +74,13 @@ int DeliveryVehicle::performDeliveryDay(int *numberOfDeliveries) {
             distance = 10-_current_station + next_station;
         if (station_counter + distance > 12)
         {
+            break;
+            /*
             *numberOfDeliveries = delivery_counter;
             total_revenue= 4*delivery_counter - _vehicle_quality -station_counter;
             cout << "Total revenue is " << total_revenue << endl;
             return total_revenue;
+             */
         }
 
         station_counter+= distance;

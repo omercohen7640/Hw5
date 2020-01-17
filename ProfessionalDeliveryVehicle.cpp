@@ -33,10 +33,13 @@ int ProfessionalDeliveryVehicle::performDeliveryDay(int *numberOfDeliveries) {
             distance = 10-_current_station + next_station;
         if (station_counter + distance > 12)
         {
+            break;
+            /*
             *numberOfDeliveries = delivery_counter;
             total_revenue= station_counter - _vehicle_quality -station_counter;
             cout << "Total revenue is " << total_revenue << endl;
             return total_revenue;
+             */
         }
 
         station_counter+= distance;
@@ -47,18 +50,18 @@ int ProfessionalDeliveryVehicle::performDeliveryDay(int *numberOfDeliveries) {
         parcel_queue.pop_front();
     }
     *numberOfDeliveries = station_counter;
-    total_revenue= delivery_counter * 4 - _vehicle_quality ;
+    total_revenue= delivery_counter * 4 -station_counter - _vehicle_quality ;
     cout << "Total travel distance is " << station_counter << endl;
     cout << "Total revenue is " << total_revenue << endl;
-    if (delivery_counter == 0)
-        cout << "Revenue per parcel: no parcels" << endl;
-    else
-        cout << "Revenue per parcel: " << total_revenue/delivery_counter << endl;
     if (station_counter == 0) {
         cout << "Revenue per distance: no distance" << endl;
     }else{
         cout << "Revenue per distance: " << total_revenue / station_counter << endl;
     }
+    if (delivery_counter == 0)
+        cout << "Revenue per parcel: no parcels" << endl;
+    else
+        cout << "Revenue per parcel: " << total_revenue/delivery_counter << endl;
     return total_revenue;
 }
 
