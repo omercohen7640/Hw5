@@ -11,7 +11,7 @@ void test (list<DeliveryVehicle*>::iterator lastReceivedAParcel_)
     cout << "test1" << endl;
 }
 
-DeliveryCompany::DeliveryCompany(int money) : balance_(money), revenue_(0), lastReceivedAParcel_(DV_List_.getTopVehicle()), numberOfDeliveries_(0){}
+DeliveryCompany::DeliveryCompany(int money) : balance_(money), revenue_(0), lastReceivedAParcel_(DV_List_.getBottomVehicle()), numberOfDeliveries_(0){}
 
 DeliveryCompany::~DeliveryCompany(){}
 
