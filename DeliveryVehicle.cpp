@@ -75,12 +75,6 @@ int DeliveryVehicle::performDeliveryDay(int *numberOfDeliveries) {
         if (station_counter + distance > 12)
         {
             break;
-            /*
-            *numberOfDeliveries = delivery_counter;
-            total_revenue= 4*delivery_counter - _vehicle_quality -station_counter;
-            cout << "Total revenue is " << total_revenue << endl;
-            return total_revenue;
-             */
         }
         _current_station = next_station;
 
@@ -89,6 +83,7 @@ int DeliveryVehicle::performDeliveryDay(int *numberOfDeliveries) {
 
         cout << "Delivering parcel " << parcel_queue.front()->getID() << " to position " << next_station << endl;
         cout << "Fuel consumed: " << distance << " Revenue is: 4" << endl;
+        delete parcel_queue.front();
         parcel_queue.pop_front();
     }
     *numberOfDeliveries = delivery_counter;
