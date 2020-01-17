@@ -10,7 +10,7 @@ Parcel::Parcel(const char *ID , int dest ): _dest(dest) {
 }
 
 Parcel::~Parcel() {
-    delete _id;
+    delete[] _id;
 }
 
 int Parcel::getDest() const{
