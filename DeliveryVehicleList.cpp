@@ -35,4 +35,8 @@ bool DeliveryVehicleList::isEmpty() {
     return DV_List_.empty();
 }
 
+int DeliveryVehicleList::listSize() {
+    return DV_List_.size();
+}
+
 

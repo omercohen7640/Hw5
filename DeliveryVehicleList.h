@@ -53,6 +53,13 @@ Parameters: None
 Return value: bool - true if empty, else false
 **********************************************************************************/
         bool isEmpty();
+/*********************************************************************************
+Function name: listSize
+Description: returns the size of the list
+Parameters: None
+Return value: int - size of list
+**********************************************************************************/
+        int listSize();
 
     protected:
         list<DeliveryVehicle*> DV_List_;
