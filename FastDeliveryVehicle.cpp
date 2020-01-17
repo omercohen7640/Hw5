@@ -48,7 +48,8 @@ int FastDeliveryVehicle::performDeliveryDay(int *numberOfDeliveries) {
         delivery_counter++;
 
         cout << "Delivering parcel " << parcel_queue.front()->getID() << " to position " << next_station << endl;
-        cout << "Fuel consumed: " << distance << " Revenue is: " << distance*2 << endl;
+        cout << "Fuel consumed: " << distance << " Revenue is: " << distance * 2 << endl;
+        delete parcel_queue.front();
         parcel_queue.pop_front();
     }
     *numberOfDeliveries = delivery_counter;

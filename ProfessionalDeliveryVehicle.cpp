@@ -46,6 +46,7 @@ int ProfessionalDeliveryVehicle::performDeliveryDay(int *numberOfDeliveries) {
 
             cout << "Delivering parcel " << parcel_queue.front()->getID() << " to position " << next_station << endl;
             cout << "Fuel consumed: " << distance << " Revenue is: 4" << endl;
+            delete parcel_queue.front();
             parcel_queue.pop_front();
             *numberOfDeliveries = delivery_counter;
             total_revenue = delivery_counter * 4 - station_counter - _vehicle_quality;
